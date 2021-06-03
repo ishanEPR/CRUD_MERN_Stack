@@ -30,7 +30,10 @@ app.use('/js',express.static(path.resolve(__dirname,"assets/js")))
 
 
 app.get('/',(req,res)=>{
-    res.send("Crud Application");
+   // res.send("Crud Application");
+   res.render('index');
+
+
 
 })
 
