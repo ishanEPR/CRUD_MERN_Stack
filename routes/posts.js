@@ -1,6 +1,6 @@
 const express=require('express');
 //import database schema
-const posts=require('../models/posts');
+const Posts=require('../models/posts');
 
 
 const router=express.Router();
@@ -21,5 +21,7 @@ router.post('/post/save',(req,res)=>{
     });
 
 });
+
+
 
 module.exports=router;

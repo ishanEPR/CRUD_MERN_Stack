@@ -1,7 +1,21 @@
 const express=require('express');
 const mongoose=require('mongoose');
+const bodyParser=require('body-parser');
+//convert javascript object to json object
+
+
 
 const app=express();
+
+//import routes
+const postRoutes=require('./routes/posts');
+
+//app middleware
+app.use(bodyParser.json());
+
+//route middleware
+app.use(postRoutes);
+
 
 const PORT=8000;
 const DB_URL='mongodb+srv://ishan97:19970330@cluster0.dbi3m.mongodb.net/student_db?retryWrites=true&w=majority';
