@@ -126,9 +126,9 @@ router.route('/post/delete/:id').delete(async (req,res)=>{
         res.status(200).send({status:"User Daleted"});
 
     }).catch((err)=>{
-        console.log(err.message);error:err})
-    })
-})
+        console.log(err.message);error:err});
+    });
+// });
 
 
 ///

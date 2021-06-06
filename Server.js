@@ -3,6 +3,9 @@ const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
 //convert javascript object to json object
 
+////cors import= servers kihipayak tiyenwa ne
+const cors=require('cors');
+
 
 
 const app=express();
@@ -12,6 +15,8 @@ const postRoutes=require('./routes/posts');
 
 //app middleware
 app.use(bodyParser.json());
+
+app.use(cors());
 
 //route middleware
 app.use(postRoutes);
