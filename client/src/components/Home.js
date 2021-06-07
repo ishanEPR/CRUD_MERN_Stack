@@ -18,7 +18,7 @@ componentDidMount()
 }
 retrievePosts()
 {
-  axios.get("http://localhost:8000/posts").then((res)=>{
+  axios.get("/posts").then((res)=>{
     if(res.data.success)
     {
       this.setState({
@@ -49,7 +49,7 @@ retrievePosts()
 
 
         {this.state.posts.map((posts,index)=>(
-            <tr>
+            <tr key={index}>
               <th scope="row">{index+1}</th>
               <td >
                 <a href={'/post/'+posts._id} style={{textDecoration:"none"}}> {posts.topic}</a>
