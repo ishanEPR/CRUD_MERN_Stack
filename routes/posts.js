@@ -76,6 +76,27 @@ router.get('/posts',(req,res)=>{
 
 });
 
+///get a specific post
+router.get("/post/:id",(req,res)=>{
+    let postid=req.params.id;
+
+    Posts.findById(postid,(err,post)=>{
+        if(err){
+            return res.status(400).json({
+                success:false,
+                err
+            });
+        }
+
+        return res.status(200).json({
+            success:true,
+            post
+        });
+
+    });
+
+});
+
 
 //update post
 /////
