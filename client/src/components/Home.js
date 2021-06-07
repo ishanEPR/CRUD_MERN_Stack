@@ -52,7 +52,7 @@ retrievePosts()
             <tr>
               <th scope="row">{index+1}</th>
               <td >
-                <a href={'/post/{posts._id}'} style={{textDecoration:"none"}}> {posts.topic}</a>
+                <a href={'/post/'+posts._id} style={{textDecoration:"none"}}> {posts.topic}</a>
              </td>
               <td>{posts.description}</td>
               <td>{posts.postCategory}</td>
