@@ -32,6 +32,7 @@ retrievePosts()
   render() {
     return (
       <div className="container">
+      <h1>All Posts</h1>
 
       <table className="table">
         <thead>
@@ -42,21 +43,40 @@ retrievePosts()
             <th scope="col">Post Category</th>
             <th scope="col">Action</th>
           </tr>
-          <tbody>
+        </thead>
+        <tbody>
 
-          {this.state.posts.map(posts=>(
-          <tr>
-            <td scope="row">{posts.topic}</td>
-            <td>{posts.description}</td>
-            <td>{posts.postCategory}</td>
-          </tr>
+
+
+        {this.state.posts.map((posts,index)=>(
+            <tr>
+              <th scope="row">{index+1}</th>
+              <td >{posts.topic}</td>
+              <td>{posts.description}</td>
+              <td>{posts.postCategory}</td>
+              <td>
+                <a className="btn btn-warning" href="#">
+                  <i className="fas fa-edit"></i>&nbsp;Edit
+                </a>
+                &nbsp;
+                <a className="btn btn-danger" href="#">
+                  <i className="far fa-trash-alt"></i>&nbsp;Delete
+                </a>
+              </td>
+            </tr>
         ))}
         
-          </tbody>
-        </thead>
+          
+        </tbody>
+    </table>
+
+     
 
 
-      </table>
+         
+
+
+      
         
       </div>
     )
