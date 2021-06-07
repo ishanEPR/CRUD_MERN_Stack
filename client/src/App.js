@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//import posts from '../../models/posts';
 
  class App extends Component {
 constructor(props){
@@ -17,11 +18,11 @@ componentDidMount()
 }
 retrievePosts()
 {
-  axios.get("http://localhost:8000/").then((res)=>{
-    if(res.data)
+  axios.get("http://localhost:8000/posts").then((res)=>{
+    if(res.data.success)
     {
       this.setState({
-        posts:res.this.data,
+        posts:res.data.existingPosts,
       });
       console.log(this.state.posts);
     }
@@ -31,6 +32,13 @@ retrievePosts()
   render() {
     return (
       <div>
+        {this.state.posts.map(posts=>(
+          <div>
+            <p>{posts.topic}</p>
+            <p>{posts.description}</p>
+            <p>{posts.postCategory}</p>
+          </div>
+        ))}
         
       </div>
     )

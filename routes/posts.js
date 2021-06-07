@@ -48,33 +48,33 @@ router.route('/post/save').post((req,res)=>{
 //get posts
 //////
 
-router.route('/').get((req,res)=>{
-    Posts.find().then((students)=>{
-        res.json(students);
-    }).catch((err)=>{
-        console.log(err);
-    });
-});
+// router.route('/').get((req,res)=>{
+//     Posts.find().then((students)=>{
+//         res.json(students);
+//     }).catch((err)=>{
+//         console.log(err);
+//     });
+// });
 /////
 
 
-// router.get('/posts',(req,res)=>{
-//     Posts.find().exec((err,posts)=>{
-//         if(err)
-//         {
-//             return res.status(400).json({
-//                 error:err
-//             });
-//         }
+router.get('/posts',(req,res)=>{
+    Posts.find().exec((err,posts)=>{
+        if(err)
+        {
+            return res.status(400).json({
+                error:err
+            });
+        }
        
-//             return res.status(200).json({
-//                 success:true,
-//                 existingPosts:posts,
-//             });
+            return res.status(200).json({
+                success:true,
+                existingPosts:posts,
+            });
        
-//     });
+    });
 
-// });
+});
 
 
 //update post
