@@ -31,14 +31,32 @@ retrievePosts()
 
   render() {
     return (
-      <div>
-        {this.state.posts.map(posts=>(
-          <div>
-            <p>{posts.topic}</p>
-            <p>{posts.description}</p>
-            <p>{posts.postCategory}</p>
-          </div>
+      <div className="container">
+
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Topic</th>
+            <th scope="col">Description</th>
+            <th scope="col">Post Category</th>
+            <th scope="col">Action</th>
+          </tr>
+          <tbody>
+
+          {this.state.posts.map(posts=>(
+          <tr>
+            <td scope="row">{posts.topic}</td>
+            <td>{posts.description}</td>
+            <td>{posts.postCategory}</td>
+          </tr>
         ))}
+        
+          </tbody>
+        </thead>
+
+
+      </table>
         
       </div>
     )
