@@ -12,10 +12,10 @@ export default class App extends Component {
       <BrowserRouter>
         <div className="container">
         <NavBar/>
-          <Route path="/" exact Component={Home}/>
-          <Route path="/add" Component={CreatePost}/>
-          <Route path="/edit/:id" Component={EditPost}/>
-          <Route path="/post/:id" Component={PostDetails}/>
+          <Route path="/" exact component={Home}/>
+          <Route path="/add" component={CreatePost}/>
+          <Route path="/edit/:id" component={EditPost}/>
+          <Route path="/post/:id" component={PostDetails}/>
 
         
         </div>

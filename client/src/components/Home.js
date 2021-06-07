@@ -51,7 +51,9 @@ retrievePosts()
         {this.state.posts.map((posts,index)=>(
             <tr>
               <th scope="row">{index+1}</th>
-              <td >{posts.topic}</td>
+              <td >
+                <a href={'/post/{posts._id}'} style={{textDecoration:"none"}}> {posts.topic}</a>
+             </td>
               <td>{posts.description}</td>
               <td>{posts.postCategory}</td>
               <td>
@@ -69,6 +71,8 @@ retrievePosts()
           
         </tbody>
     </table>
+
+    <button className="btn btn-success"><a href="/add" style={{textDecoration:'none',color:'white'}}>Create New Post</a></button>
 
      
 
