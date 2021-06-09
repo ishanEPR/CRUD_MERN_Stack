@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 
 export default class CreatePost extends Component {
 
@@ -33,6 +33,20 @@ export default class CreatePost extends Component {
             description:description,
             postCategory:postCategory
         }
+
+        axios.post("/post/save",data).then(
+            (res)=>{
+                if(res.data.success)
+                {
+                    this.setState(
+                       { topic:"",
+                    description:"",
+                    postCategory:""}
+
+                    )
+                }
+            }
+        )
         console.log(data);
     }
     render() {
