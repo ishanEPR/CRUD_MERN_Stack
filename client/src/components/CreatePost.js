@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
 
 export default class CreatePost extends Component {
 
@@ -61,7 +62,7 @@ export default class CreatePost extends Component {
     
                     <div className="form-group">
                         <label for="gender">Enter Post Category</label>
-                        <input type="text" className="form-control" id="gender"  placeholder="Enter Post Category" 
+                        <input type="text" className="form-control" name="postCategory"  placeholder="Enter Post Category" 
                         value={this.state.postCategory}
                         onChange={
                             this.handleInputChange
