@@ -84,7 +84,7 @@ export default class CreatePost extends Component {
                         
                     </div>
                    
-                    <button type="submit" class="btn btn-success" style={{marginTop:20}}
+                    <button type="submit" class="btn btn-primary" style={{marginTop:20}}
                     onClick={this.onSubmit}
                     >Submit</button>
                 </form>
