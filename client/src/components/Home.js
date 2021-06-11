@@ -37,11 +37,32 @@ onDelete=(id)=>{
   })
 }
 
+handleSearchArea=(e)=>{
+  console.log(e.currentTarget.value);
+}
+
 
   render() {
     return (
       <div className="container">
-      <h1>All Posts</h1>
+        <div className="row">
+          <div className="col-lg-9 mt-2 mb-2">
+          <h1>All Posts</h1>
+
+          </div>
+          <div className="col-lg-3 mt-2 mb-2">
+            <input className="form-control"
+            type="search"
+            placeholder="Search"
+            name="searchQuery"
+            onChange={this.handleSearchArea}>
+
+            </input>
+
+          </div>
+
+        </div>
+     
 
       <table className="table">
         <thead>
