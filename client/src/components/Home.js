@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-//import posts from '../../models/posts';
 
  class Home extends Component {
 constructor(props){
@@ -43,6 +42,10 @@ filterData(posts,searchKey){
 
   const result=posts.filter((post)=>
   post.topic.toLowerCase().includes(searchKey)
+  ||post.description.toLowerCase().includes(searchKey)
+  ||post.postCategory.toLowerCase().includes(searchKey)
+ 
+ 
   )
   this.setState({posts:result})
 }
