@@ -1,12 +1,123 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class EditPost extends Component {
-    render() {
-        return (
-            <div>
-            EditPost
-                
-            </div>
-        )
+
+
+    constructor(props)
+    {
+        super(props);
+        this.state={
+            topic:"",
+            description:"",
+            postCategory:""
+        }
     }
+
+
+    handleInputChange=(e)=>{
+        const {name,value}=e.target;
+
+        this.setState({
+            ...this.state,
+            [name]:value
+        })
+    }
+
+    onSubmit=(e)=>{
+        e.preventDefault();
+
+        const id=this.props.match.params.id;
+
+        const {topic,description,postCategory}=this.state;
+
+        const data={
+            topic:topic,
+            description:description,
+            postCategory:postCategory
+        }
+
+        axios.put("/post/update/"+id,data).then(
+            (res)=>{
+                if(res.data.success)
+                {
+                    alert("Post updated Successfully")
+                    this.setState(
+                       { topic:"",
+                    description:"",
+                    postCategory:""}
+
+                    )
+                }
+            }
+        )
+        console.log(data);
+    }
+
+    componentDidMount()
+    {
+
+        const id=this.props.match.params.id;
+
+        axios.get('/post/'+id).then((res)=>{
+
+           if(res.data.success)
+           {
+               this.setState({
+                  topic:res.data.post.topic,
+                  description:res.data.post.description,
+                  postCategory:res.data.post.postCategory
+               });
+               console.log(this.state.post);
+           }
+        })
+
+    }
+
+
+    render() {
+        return(
+            <div className="container">
+                <form className="needs-validation" noValidate>
+                    <div className="form-group" style={{marginTop:'15px'}}>
+                        <label >Enter Topic</label>
+                        <input type="text" className="form-control" name="topic"  placeholder="Enter Topic"
+                        value={this.state.topic}
+                            onChange={this.handleInputChange
+    
+                                //setName(e.target.value);
+                            }
+                        />
+                        
+                    </div>
+    
+                    <div className="form-group">
+                        <label for="age">Enter Description</label>
+                        <input type="text" className="form-control" name="description"  placeholder="Enter Description"
+                        value={this.state.description}
+                            onChange={this.handleInputChange}
+                        />
+                        
+                    </div>
+    
+                    <div className="form-group">
+                        <label for="gender">Enter Post Category</label>
+                        <input type="text" className="form-control" name="postCategory"  placeholder="Enter Post Category" 
+                        value={this.state.postCategory}
+                        onChange={
+                            this.handleInputChange
+                        }/>
+                        
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary" style={{marginTop:20}}
+                    onClick={this.onSubmit}
+                    >
+                    <i className='far fa-check-square'></i>
+                    &nbsp;Update</button>
+                </form>
+            </div>
+        );
+    }
+
 }
