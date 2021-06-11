@@ -140,32 +140,32 @@ router.put('/post/update/:id',(req,res)=>{
 ///delete posts
 
 ///
-router.route('/post/delete/:id').delete(async (req,res)=>{
-    let userId=req.params.id;
+// router.route('/post/delete/:id').delete(async (req,res)=>{
+//     let userId=req.params.id;
 
-    await Posts.findByIdAndDelete(userId).then(()=>{
-        res.status(200).send({status:"User Daleted"});
+//     await Posts.findByIdAndDelete(userId).then(()=>{
+//         res.status(200).send({status:"User Daleted"});
 
-    }).catch((err)=>{
-        console.log(err.message);error:err});
-    });
+//     }).catch((err)=>{
+//         console.log(err.message);error:err});
+//     });
 // });
 
 
 ///
 
-// router.delete('/post/delete/:id',(req,res)=>{
-//     Posts.findOneAndRemove(req.params.id).exec((err,deletePost)=>{
-//         if(err) return res.status(400).json({
-//             message:"Delete Unsuccessful",err
-//         });
+router.delete('/post/delete/:id',(req,res)=>{
+    Posts.findOneAndRemove(req.params.id).exec((err,deletePost)=>{
+        if(err) return res.status(400).json({
+            message:"Delete Unsuccessful",err
+        });
 
-//         return res.status(200).json({
-//             message:"Delete Successful",
-//             deletePost
-//         });
-//     });
-// }); 
+        return res.status(200).json({
+            message:"Delete Successful",
+            deletePost
+        });
+    });
+}); 
 
 
 
