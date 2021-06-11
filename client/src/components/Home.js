@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 //import posts from '../../models/posts';
 
  class Home extends Component {
@@ -37,8 +38,27 @@ onDelete=(id)=>{
   })
 }
 
+///search
+filterData(posts,searchKey){
+
+  const result=posts.filter((post)=>
+  post.topic.toLowerCase().includes(searchKey)
+  )
+  this.setState({posts:result})
+}
+
 handleSearchArea=(e)=>{
-  console.log(e.currentTarget.value);
+  const searchKey=e.currentTarget.value;
+
+  axios.get("/posts").then((res)=>{
+    if(res.data.success)
+    {
+      
+      this.filterData(res.data.existingPosts,searchKey);
+    }
+  })
+
+
 }
 
 
