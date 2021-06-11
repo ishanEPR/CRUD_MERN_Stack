@@ -100,42 +100,42 @@ router.get("/post/:id",(req,res)=>{
 
 //update post
 /////
-router.route('/post/update/:id').put(async(req,res)=>{
+// router.route('/post/update/:id').put(async(req,res)=>{
 
-    let userId=req.params.id;
+//     let userId=req.params.id;
 
-    const {topic,description,postCategory}=req.body;
-    const updateStudent={
-        topic,
-        description,
-        postCategory,
-    }
+//     const {topic,description,postCategory}=req.body;
+//     const updateStudent={
+//         topic,
+//         description,
+//         postCategory,
+//     }
 
-    await Posts.findByIdAndUpdate(userId,updateStudent).then(()=>{
-        res.status(200).send({status:"user Updated"});
-    }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status:"Error with updating data",error:err})
-    })
-})
+//     await Posts.findByIdAndUpdate(userId,updateStudent).then(()=>{
+//         res.status(200).send({status:"user Updated"});
+//     }).catch((err)=>{
+//         console.log(err);
+//         res.status(500).send({status:"Error with updating data",error:err})
+//     })
+// })
 
 //////
 
-// router.put('/post/update/:id',(req,res)=>{
-//     Posts.findByIdAndUpdate(
-//         req.params.id,
-//         {
-//             $set:req.body
-//         },
-//         (err,post)=>{
-//             if(err){
-//                 return res.status(400).json({error:err});
-//             }
-//             return res.status(200).json({
-//                 success:"Updated Succesfully"});
-//         }
-//     );
-// });
+router.put('/post/update/:id',(req,res)=>{
+    Posts.findByIdAndUpdate(
+        req.params.id,
+        {
+            $set:req.body
+        },
+        (err,post)=>{
+            if(err){
+                return res.status(400).json({error:err});
+            }
+            return res.status(200).json({
+                success:"Updated Succesfully"});
+        }
+    );
+});
 
 ///delete posts
 
